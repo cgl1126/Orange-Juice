@@ -48,9 +48,3 @@ list1 = [[7, 0, 0, 0, 0],
 max_sum = how.demo1(list1, 5, 5)
 print(max_sum)
 
-
-
-# print(list1)
-# print(type(list1))
-# print(len(list1))
-# print(list1[0][0])
