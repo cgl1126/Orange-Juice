@@ -4,6 +4,7 @@
 import os
 import datetime
 import inspect
+import sys
 
 THIS_FILE_NAME = __file__
 LEVELS ={"DEBUG":1, "INFO":2, "WARNING":3, "ERROR":4}
@@ -17,12 +18,12 @@ def log_print_element(log_element: str):
     return 
 
 def log_msg_handle(log_level: str,
-            filename: str,
-            line_no: int,
-            log_msg: str,
-            *log_paras: tuple):
-    if LEVELS[log_level] < LEVELS[os.getenv["LOG_LEVEL", "DEBUG"]]:
-        return
+                   filename: str,
+                   line_no: int,
+                   log_msg: str,
+                   *log_paras: tuple):
+    # if LEVELS[log_level] < LEVELS[os.getenv["LOG_LEVEL", "DEBUG"]]:
+    #     return
     log_timestamp = log_get_timestamp()
     log_print_element(log_timestamp)
     log_print_element(log_level)
@@ -74,6 +75,6 @@ if __name__ == "__main__":
     while i < 3:
         log_error(THIS_FILE_NAME,
             	  "%s say %s %d times", "I", "Hello world", i)
-        i -= 1
+        i += 1
 
 
