@@ -22,8 +22,8 @@ def log_msg_handle(log_level: str,
                    line_no: int,
                    log_msg: str,
                    *log_paras: tuple):
-    # if LEVELS[log_level] < LEVELS[os.getenv["LOG_LEVEL", "DEBUG"]]:
-    #     return
+    if LEVELS[log_level] < LEVELS[os.getenv("LOG_LEVEL", "DEBUG")]:
+        return
     log_timestamp = log_get_timestamp()
     log_print_element(log_timestamp)
     log_print_element(log_level)
