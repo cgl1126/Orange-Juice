@@ -16,12 +16,12 @@ def log_print_element(log_element: str):
     print("[" + log_element +"]", end="")
     return 
 
-def log_msg(log_level: str,
+def log_msg_handle(log_level: str,
             filename: str,
             line_no: int,
             log_msg: str,
             *log_paras: tuple):
-    if LEVELS[log_level] < LEVEL[os.getenv["LOG_LEVEL", "DEBUG"]]:
+    if LEVELS[log_level] < LEVELS[os.getenv["LOG_LEVEL", "DEBUG"]]:
         return
     log_timestamp = log_get_timestamp()
     log_print_element(log_timestamp)
@@ -36,28 +36,28 @@ def log_debug(filename: str,
               log_msg: str,
               *log_paras: tuple):
     line_no = inspect.currentframe().f_back.f_lineno
-    log_msg("DEBUG", filename, line_no, log_msg, log_paras)
+    log_msg_handle("DEBUG", filename, line_no, log_msg, log_paras)
     return
 
 def log_error(filename: str,
               log_msg: str,
               *log_paras: tuple):
     line_no = inspect.currentframe().f_back.f_lineno
-    log_msg("ERROR", filename, line_no, "\x1b[41m" + log_msg + "\x1b[0m", log_paras)
+    log_msg_handle("ERROR", filename, line_no, "\x1b[41m" + log_msg + "\x1b[0m", log_paras)
     return
 
 def log_warning(filename: str,
                 log_msg: str,
                 *log_paras: tuple):
     line_no = inspect.currentframe().f_back.f_lineno
-    log_msg("WARNING", filename, line_no, "\x1b[43m" + log_msg + "\x1b[0m", log_paras)
+    log_msg_handle("WARNING", filename, line_no, "\x1b[43m" + log_msg + "\x1b[0m", log_paras)
     return
 
 def log_info(filename: str,
              log_msg: str,
              *log_paras: tuple):
     line_no = inspect.currentframe().f_back.f_lineno
-    log_msg("INFO", filename, line_no, log_msg, log_paras)
+    log_msg_handle("INFO", filename, line_no, log_msg, log_paras)
     return
 
 def log_info_color(filename: str,
@@ -66,14 +66,14 @@ def log_info_color(filename: str,
                    *log_paras: tuple):
     color_str = "\x1b[%dm" % color
     line_no = inspect.currentframe().f_back.f_lineno
-    log_msg("INFO", filename, line_no, color_str + log_msg + "\x1b[0m", log_paras)
+    log_msg_handle("INFO", filename, line_no, color_str + log_msg + "\x1b[0m", log_paras)
     return
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     i = 0
     while i < 3:
         log_error(THIS_FILE_NAME,
-            %s say %s %d times, "I", "Hello world", i)
+            	  "%s say %s %d times", "I", "Hello world", i)
         i -= 1
 
 
