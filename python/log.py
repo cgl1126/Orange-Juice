@@ -74,7 +74,7 @@ if __name__ == "__main__":
     i = 0
     while i < 3:
         log_error(THIS_FILE_NAME,
-            	  "%s say %s %d times", "I", "Hello world", i)
+                  "%s say %s %d times", "I", "Hello world", i)
         i += 1
 
 
